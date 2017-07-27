@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+use VideoLib::CGIHandler;
+use VideoLib::Maintenance;
+
+my $query = VideoLib::CGIHandler->new;
+
+my $maintenance = VideoLib::Maintenance->new(request => $query->request);
+my $response = $maintenance->create_video;
+$query->send_response($response);

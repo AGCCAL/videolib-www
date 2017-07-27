@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+use VideoLib::CGIHandler;
+use VideoLib::Maintenance;
+
+my $query = VideoLib::CGIHandler->new;
+
+my $maintenance = VideoLib::Maintenance->new(request => $query->request, 'decode-content'=>0);
+my $response = $maintenance->modify_video;
+$query->send_response($response);
